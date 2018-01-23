@@ -15,19 +15,23 @@ https://github.com/vitaly-chibrikov/otus_java_2018_01
 
 public class MainStream {
     public static void main(String[] args) throws IOException {
-        String salt = "Иван Волков\u200BI'll\uFEFF be back)\n" +
+        String salt = "Дмитрий Шевченко\u200BСЧАСТЬЕ ДЛЯ ВСЕХ, ДАРОМ, И ПУСТЬ НИКТО НЕ УЙДЁТ\uFEFF ОБИЖЕННЫЙ!\n" +
+                "\n" +
+                "Olesya Belichenko\u200Bлед тронулся господа присяжные заседатели, командовать\uFEFF парадом буду Я\n" +
+                "\n" +
+                "Сергей Ирюпин\u200Bto be or not to\uFEFF be\n" +
+                "\n" +
+                "alleextube\u200BDo what you\uFEFF ought, and come what may!\n" +
+                "\n" +
+                "Torino Scale\u200Bскажи как няня - где же\uFEFF кружка\n" +
                 "\n" +
                 "\n" +
-                "Владимир Лиханов\u200B42\uFEFF\n" +
+                "Dennys0n\u200Boblady\uFEFF oblada life goes on\n" +
                 "\n" +
-                "Ярослав Калашник\u200B))) ну ок, допустим\uFEFF\n" +
-                "\n" +
-                "Senior Tomato\u200BThe Gods will be\uFEFF with us\n" +
-                "\n" +
-                "Бари Хафизуллин\u200Byou shall\uFEFF not pass";
+                "Hunan Abrahamyan\u200Bпот вам\uFEFF армянские символы էտեճ";
 
         Files.lines(Paths.get(args[0]))
-                .map(line -> line.replace("\"", ""))
+                .map(String::trim)
                 .map(line -> line.substring(0, line.indexOf("@")))
                 .map(line -> line + "\t" + salt)
                 .sorted(Comparator.comparingLong(String::hashCode))
