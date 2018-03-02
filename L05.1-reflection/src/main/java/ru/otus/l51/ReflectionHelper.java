@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by tully.
@@ -18,7 +16,6 @@ class ReflectionHelper {
     static <T> T instantiate(Class<T> type, Object... args) {
         try {
             if (args.length == 0) {
-                //return type.newInstance(); //deprecated in 9.0
                 return type.getDeclaredConstructor().newInstance();
             } else {
                 Class<?>[] classes = toClasses(args);
@@ -36,7 +33,7 @@ class ReflectionHelper {
         boolean isAccessible = true;
         try {
             field = object.getClass().getDeclaredField(name); //getField() for public fields
-            isAccessible = field.isAccessible();
+            isAccessible = field.canAccess(object);
             field.setAccessible(true);
             return field.get(object);
         } catch (NoSuchFieldException | IllegalAccessException e) {
@@ -54,7 +51,7 @@ class ReflectionHelper {
         boolean isAccessible = true;
         try {
             field = object.getClass().getDeclaredField(name); //getField() for public fields
-            isAccessible = field.isAccessible();
+            isAccessible = field.canAccess(object);
             field.setAccessible(true);
             field.set(object, value);
         } catch (NoSuchFieldException | IllegalAccessException e) {
@@ -71,7 +68,7 @@ class ReflectionHelper {
         boolean isAccessible = true;
         try {
             method = object.getClass().getDeclaredMethod(name, toClasses(args));
-            isAccessible = method.isAccessible();
+            isAccessible = method.canAccess(object);
             method.setAccessible(true);
             return method.invoke(object, args);
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
@@ -85,9 +82,6 @@ class ReflectionHelper {
     }
 
     static private Class<?>[] toClasses(Object[] args) {
-        List<Class<?>> classes = Arrays.stream(args)
-                .map(Object::getClass)
-                .collect(Collectors.toList());
-        return classes.toArray(new Class<?>[classes.size()]);
+        return Arrays.stream(args).map(Object::getClass).toArray(Class<?>[]::new);
     }
 }

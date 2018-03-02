@@ -18,7 +18,7 @@ public @interface Unfinished {
 
     String value();
 
-    String[] changedBy() default "";
+    String[] changedBy() default "a";
 
     String[] lastChangedBy() default "";
 

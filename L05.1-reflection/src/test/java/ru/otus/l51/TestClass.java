@@ -5,8 +5,8 @@ package ru.otus.l51;
  */
 @SuppressWarnings("unused")
 public class TestClass {
-    private static final int DEFAULT_A  = 0;
-    private static final String DEFAULT_S = "";
+    public static final int DEFAULT_A  = 0;
+    public static final String DEFAULT_S = "";
 
     private int a;
     private String s;
@@ -15,8 +15,12 @@ public class TestClass {
         this(DEFAULT_A, DEFAULT_S);
     }
 
-    public TestClass(Integer a) {
+    public TestClass(int a) {
        this(a, DEFAULT_S);
+    }
+
+    public TestClass(Integer a) {
+        this(a, DEFAULT_S);
     }
 
     TestClass(Integer a, String s) {

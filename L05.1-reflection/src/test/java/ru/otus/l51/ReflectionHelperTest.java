@@ -11,11 +11,11 @@ public class ReflectionHelperTest {
     @Test
     public void instantiate() {
         TestClass testClass = ReflectionHelper.instantiate(TestClass.class);
-        Assert.assertEquals(0, testClass.getA());
-        Assert.assertEquals("", testClass.getS());
+        Assert.assertEquals(TestClass.DEFAULT_A, testClass.getA());
+        Assert.assertEquals(TestClass.DEFAULT_S, testClass.getS());
 
-        //Assert.assertEquals(1, ReflectionHelper.instantiate(TestClass.class, 1).getA());
-        //Assert.assertEquals("A", ReflectionHelper.instantiate(TestClass.class, 1, "A").getS());
+        Assert.assertEquals(1, ReflectionHelper.instantiate(TestClass.class, 1).getA());
+        Assert.assertEquals("A", ReflectionHelper.instantiate(TestClass.class, 1, "A").getS());
     }
 
     @Test
