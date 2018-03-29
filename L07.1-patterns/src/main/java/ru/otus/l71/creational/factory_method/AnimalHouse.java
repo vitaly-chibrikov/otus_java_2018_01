@@ -9,7 +9,7 @@ public abstract class AnimalHouse {
     private final Animal animal;
 
     protected AnimalHouse() {
-        //build a house
+        //build a house from parts
         //add a bowl
         //add toys
 
@@ -18,6 +18,9 @@ public abstract class AnimalHouse {
         animal.makeSound();
     }
 
+    // protected abstract Part[] getParts();
+    // protected abstract Bowl getBowl();
+    // protected abstract Toy[] getToys();
 
     protected abstract Animal getAnimal();
 }

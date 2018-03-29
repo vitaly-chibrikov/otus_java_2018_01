@@ -12,7 +12,7 @@ public class ResourcePoolFactory implements ResourceFactory {
     @Override
     public Resource get() {
         if (pool.isEmpty()) {
-            return new PoolResource();
+            return new PoolResource(new RealResource());
         } else {
             return pool.poll();
         }
@@ -20,16 +20,16 @@ public class ResourcePoolFactory implements ResourceFactory {
 
 
     public class PoolResource implements Resource {
-        //Real Resource
-        private final long creationTime;
+        private final Resource resource;
 
-        public PoolResource() {
-            creationTime = System.nanoTime();
+
+        PoolResource(Resource resource) {
+            this.resource = resource;
         }
 
         @Override
         public void print() {
-            System.out.println(creationTime);
+            resource.print();
         }
 
         @Override

@@ -9,6 +9,6 @@ public class Main {
         Car car = new Car();
         car.doRepair();
         car.doWash();
-        //car.doTO();
+        car.doTO();
     }
 }

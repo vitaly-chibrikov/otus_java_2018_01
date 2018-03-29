@@ -14,6 +14,7 @@ public class Main {
         Printer reversedPrinter = new ReversedPrinter(normalPrinter);
         Printer upperCasePrinter = new UpperCasePrinter(normalPrinter);
 
+
         normalPrinter.print("Optional wrapper in the Decorator pattern.");
         reversedPrinter.print("Optional wrapper in the Decorator pattern.");
         upperCasePrinter.print("Optional wrapper in the Decorator pattern.");

@@ -9,7 +9,7 @@ package ru.otus.l71.creational.prototype;
 public class StringPrototype implements Prototype {
     private final String name;
 
-    public StringPrototype(String name) {
+    StringPrototype(String name) {
         this.name = name;
     }
 
