@@ -1,0 +1,4 @@
+[INFO ] 2018-05-16 18:57:09.462 [main] Main - This is info message
+[WARN ] 2018-05-16 18:57:09.462 [main] Main - This is warn message
+[ERROR] 2018-05-16 18:57:09.462 [main] Main - This is error message
+[FATAL] 2018-05-16 18:57:09.462 [main] Main - This is fatal message
